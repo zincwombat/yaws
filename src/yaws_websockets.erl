@@ -1247,11 +1247,7 @@ query_header(HeaderName, Headers) ->
 query_header(Header, Headers, Default) ->
     yaws_api:get_header(Headers, Header, Default).
 
--ifdef(HAVE_CRYPTO_HASH).
--define(CRYPTO_HASH(V), crypto:hash(sha,V)).
--else.
--define(CRYPTO_HASH(V), crypto:sha(V)).
--endif.
+-define(CRYPTO_HASH(V), crypto:hash(V)).
 
 hash_nonce(Nonce) ->
     Salted = Nonce ++ "258EAFA5-E914-47DA-95CA-C5AB0DC85B11",
